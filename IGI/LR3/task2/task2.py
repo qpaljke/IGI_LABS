@@ -1,3 +1,10 @@
+"""
+Count the numbers that are greater than '12'
+Author: Paul Shukaila
+Date: 20.03.2024
+"""
+
+
 def get_integer_input():
     while True:
         try:
@@ -27,7 +34,7 @@ if __name__ == "__main__":
     while True:
         try:
             result = count_numbers()
-            print('Count of integer numbers, more than 12S: ', result)
+            print('Count of integer numbers, more than 12: ', result)
         except Exception as e:
             print(f'Error: {str(e)}')
 

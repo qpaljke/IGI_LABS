@@ -1,3 +1,11 @@
+"""
+1) Find the maximum absolute value in entered list
+2) Find the sum between the first and the second positive list values
+Author: Paul Shukaila
+Date: 20.03.2024
+"""
+
+
 def get_list_len_input():
     while True:
         try:
@@ -6,7 +14,7 @@ def get_list_len_input():
                 raise ValueError("List length should be a positive integer")
             return num
         except ValueError as verr:
-            print(f'Error: {str(verr)}')
+            print(f'Value input error: {str(verr)}')
 
 
 def get_float_input():
@@ -18,9 +26,9 @@ def get_float_input():
             print('Wrong input')
 
 
-def task5(length: int):
+def task5(lst_len: int):
     lst = []
-    for i in range(n):
+    for i in range(lst_len):
         num = get_float_input()
         lst.append(num)
 
@@ -28,7 +36,7 @@ def task5(length: int):
     first_positive_index = None
     second_positive_index = None
 
-    for i, num in lst:
+    for i, num in enumerate(lst):
         if num > 0 and first_positive_index is None:
             first_positive_index = i
         elif num > 0 and first_positive_index is not None:

@@ -1,10 +1,17 @@
+"""
+Count the number of digits in a given string
+Author: Paul Shukaila
+Date: 20.03.2024
+"""
+
+
 def get_string_input():
     while True:
         try:
             st = input('Enter a string: ')
             return st
-        except Exception:
-            print('Wrong input')
+        except Exception as e:
+            print(f'Error {str(e)}')
 
 
 def count_digits(x: str):

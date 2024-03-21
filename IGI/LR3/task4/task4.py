@@ -1,3 +1,12 @@
+"""
+1) Count the number of words that are shorter than seven characters
+2) Print the shortest word ending with 'a'
+3) Print the string sorted by word length
+Author: Paul Shukaila
+Date: 20.03.2024
+"""
+
+
 def task4(x: str):
     words = x.replace(', ', ' ').split()
     count = 0

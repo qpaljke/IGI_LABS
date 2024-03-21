@@ -1,3 +1,9 @@
+"""
+Calculate function value at a point with a given accuracy and compare it to inbuilt function
+Author: Paul Shukaila
+Date: 20.03.2024
+"""
+
 import pandas as pd
 import math
 df = pd.DataFrame()
