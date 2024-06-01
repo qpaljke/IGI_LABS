@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Создание заявки</h2>
+    <form action="{% url 'repair:create_request' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit" class="btn btn-success">Подтвердить</button>
+    </form>
+
+{% endblock %}

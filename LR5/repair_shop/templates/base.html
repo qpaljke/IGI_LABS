@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Ремонтная одежды</title>
+</head>
+<body class="container-fluid">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main_page' %}">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">О компании</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'news' %}">Новости</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'privacy_policy' %}">Политика конфиденциальности</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'vacancies' %}">Вакансии</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'promo_codes' %}">Промокоды</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'statistics' %}">Статистика</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Личный кабинет</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{% if user.is_authenticated %}
+    {% if not user.is_superuser %}
+        <div>
+            <nav class="navbar fixed-bottom navbar-light bg-light">
+                <form action="{% url 'repair:create_request' %}" method="get">
+                    <button class="btn btn-success">Создать заявку</button>
+                </form>
+                <form action="{% url 'repair:user_requests' %}" method="get">
+                    <button class="btn btn-success">Мои заявки</button>
+                </form>
+                <form action="{% url 'repair:processed_request_list' %}" method="get">
+                    <button class="btn btn-success">Готовые/неготовые заявки</button>
+                </form>
+            </nav>
+        </div>
+    {% endif %}
+
+    {% if user.is_superuser %}
+        <h1>Админка</h1>
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <form action="{% url 'repair:admin_requests' %}" method="get">
+                <button class="btn btn-success">Заявки пользователей</button>
+            </form>
+        </nav>
+    {% endif %}
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+.navbar-nav {
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.navbar-nav li {
+    display: inline;
+}
+
+.navbar {
+    margin-left: 10px;
+}

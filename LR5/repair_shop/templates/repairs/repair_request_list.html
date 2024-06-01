@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        .requests {
+            text-align: center;
+            padding-bottom: 60px
+        }
+    </style>
+
+    <div class="requests">
+        <h2>Мои заявки</h2>
+        <ul>
+            {% for request in requests %}
+                <li>
+                    <h3>{{ request.title }}</h3>
+                    <img src="{{ request.image.url }}" alt="{{ request.title }}" height="400" width="600">
+                    <p>Цена: {{ request.price }}</p>
+                    <p>Описание: {{ request.description }}</p>
+
+                    <form action="{% url 'repair:edit_request' request.id %}">
+                        <button type="submit" class="btn btn-primary">Редактировать</button>
+                    </form>
+                    <form action="{% url 'repair:delete_request' request.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        .requests {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .request-title {
+            margin-top: 15px;
+        }
+    </style>
+
+    <div class="requests">
+        <h2>Заявки пользователей</h2>
+        <ul>
+            {% for request in requests %}
+                {% if request.status == 'В ожидании' and user.is_superuser %}
+                    <li>
+                        <h3 class="request-title">{{ request.title }}</h3>
+                        <img src="{{ request.image.url }}" alt="{{ request.title }}" height="400" width="600">
+                        <p>{{ request.description }}</p>
+                        <p>{{ request.status }}</p>
+                        <p>{{ request.price }}</p>
+                        <form action="{% url 'repair:process_request' request.id %}" method="post"
+                              style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="accept" class="btn btn-success">Принять</button>
+                            <button type="submit" name="reject" class="btn btn-danger">Отклонить</button>
+                        </form>
+                    </li>
+                {% endif %}
+
+
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

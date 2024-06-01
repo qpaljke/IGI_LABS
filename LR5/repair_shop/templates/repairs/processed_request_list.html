@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        div {
+            text-align: center;
+        }
+
+        .requests {
+            padding-bottom: 60px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+    <h2>Результаты</h2>
+    <div class="requests">
+        <ul>
+            {% for request in requests %}
+                <li>
+                    {% if request.status == 'Выполнено' or request.status == 'Отклонено' %}
+                        <h3>{{ request.title }}</h3>
+                        <img src="{{ request.image.url }}" alt="{{ request.title }}" height="400" width="600">
+                        <p>{{ request.description }}</p>
+                        <p>{{ request.status }}</p>
+                        <form action="{% url 'repair:claim_request' request.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="claim" class="btn btn-success">Забрать</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

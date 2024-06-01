@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Пополнить баланс</h2>
+    <p>Текущий баланс: {{ balance }} рублей</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Пополнить</button>
+    </form>
+{% endblock %}

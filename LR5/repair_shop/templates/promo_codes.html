@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Промокоды</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Применить</button>
+  </form>
+
+  <h3>Доступные промокоды</h3>
+  <ul>
+    <li><strong>Кэшбек 10%</strong> - Промокод: CASHBACK10</li>
+    <li><strong>-200 на первую заявку</strong> - Промокод: DISCOUNT200</li>
+  </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Редактировать заявку</h2>
+    <form action="{% url 'repair:edit_request' request_id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="PUT">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Сохранить изменения</button>
+    </form>
+{% endblock %}

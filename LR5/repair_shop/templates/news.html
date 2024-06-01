@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Новости</h1>
+    {% for article in articles %}
+        <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px">
+            <h2>{{ article.title }}</h2>
+            <img src="{{ article.urlToImage }}" alt="{{ article.title }}" width="600" height="400">
+            <p>{{ article.description }}</p>
+            <a href="{{ article.url }}" target="_blank">Читать полностью</a>
+        </div>
+    {% endfor %}
+{% endblock %}

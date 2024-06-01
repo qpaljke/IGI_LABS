@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Статистика</h1>
+    {% if user.is_authenticated %}
+        <img src="{{ data }}" alt="Графики статистики">
+    {% else %}
+        <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a>, чтобы просмотреть статистику.</p>
+    {% endif %}
+{% endblock %}

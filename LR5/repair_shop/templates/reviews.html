@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Отзывы</h1>
+    {% if user.is_authenticated and not user.is_superuser %}
+        <form action="{% url 'reviews' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Оставить отзыв</button>
+        </form>
+    {% elif user.is_superuser %}
+        <p>Суперюзерам запрещено оставлять отзыв</p>
+    {% else %}
+        <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a>, чтобы оставить отзыв.</p>
+    {% endif %}
+
+    <h2>Все отзывы</h2>
+    {% if reviews %}
+        <ol>
+            {% for review in reviews %}
+                <li style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px">
+                    <p><strong>{{ review.user.username }}</strong> - {{ review.created_at }}</p>
+                    <p>Оценка: {{ review.rating }}</p>
+                    <p>{{ review.text }}</p>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>Будьте первым, кто оставит отзыв</p>
+    {% endif %}
+{% endblock %}

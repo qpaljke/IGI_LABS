@@ -1,0 +1,24 @@
+[
+    {
+        "model": "common.PromoCode",
+        "pk": 1,
+        "fields": {
+            "code": "CASHBACK10",
+            "description": "Кэшбек 10% от стоимости заявки обратно пользователю",
+            "type": "CASHBACK",
+            "discount_value": "10.00",
+            "active": true
+        }
+    },
+    {
+        "model": "common.PromoCode",
+        "pk": 2,
+        "fields": {
+            "code": "DISCOUNT200",
+            "description": "-200 на первую заявку",
+            "type": "DISCOUNT",
+            "discount_value": "200.00",
+            "active": true
+        }
+    }
+]

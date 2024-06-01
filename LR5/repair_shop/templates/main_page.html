@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Последняя новость</h1>
+    {% if article %}
+        <div style="margin-bottom: 20px; border: 1px solid #ddd; padding: 10px">
+            <h2>{{ article.title }}</h2>
+            {% if article.urlToImage %}
+                <img src="{{ article.urlToImage }}" alt="{{ article.title }}" width="600" height="400">
+            {% endif %}
+            <p>{{ article.description }}</p>
+            <a href="{{ article.url }}" target="_blank">Читать полностью</a>
+        </div>
+    {% else %}
+        <p>Нет доступных новостей о моде.</p>
+    {% endif %}
+{% endblock %}
